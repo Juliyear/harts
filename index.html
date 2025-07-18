@@ -105,7 +105,7 @@
                 <p class="elemento-sobreposto semi-bold"
                 data-top="9.36"
                 data-left="66"
-                data-width="26"
+                data-width="29"
                 data-font-scale="1.594">
                     ministrado por Anderson Kocis
                 </p>
@@ -137,9 +137,9 @@
                     data-left="77.67"
                     data-width="14.79">
                 <p class="elemento-sobreposto media"
-                    data-top="13.76"
-                    data-left="78.5"
-                    data-width="20"
+                    data-top="13.73"
+                    data-left="78.62"
+                    data-width="17"
                     data-font-scale="2.523"
                     style="color: #ffffff;">
                         19h às 22h
@@ -169,7 +169,7 @@
                     </p>
                 </a>
 
-                <a href="#valor">
+                <a style="cursor: pointer;"onclick="irParaTexto()">
                     <img src="img/BOTAO_VALOR-INVESTIMENTO.png" alt="botao-vaga" class="elemento-sobreposto"
                         data-top="18.38"
                         data-left="52.8"
@@ -635,7 +635,7 @@
                         data-width="39.65"
                         style="animation: piscar2 1.5s infinite;">
                     <p class="elemento-sobreposto media"
-                        data-top="15.64"
+                        data-top="15.6"
                         data-left="32.3"
                         data-width="40"
                         data-font-scale="3.297"
@@ -1030,7 +1030,7 @@
                         data-width="39.65"
                         style="animation: piscar2 1.5s infinite;">
                     <p class="elemento-sobreposto media"
-                        data-top="51.85"
+                        data-top="51.81"
                         data-left="32.3"
                         data-width="37"
                         data-font-scale="3.297"
@@ -1077,7 +1077,7 @@
 
                 </p>
 
-                <p class="elemento-sobreposto extra-bold"
+                <p class="elemento-sobreposto extra-bold valor-inv"
                     data-top="65.85"
                     data-left="6.2"
                     data-width="53"
@@ -1259,7 +1259,7 @@
                         data-left="6.4"
                         data-width="39.65">
                     <p class="elemento-sobreposto media"
-                        data-top="78.7"
+                        data-top="78.65"
                         data-left="8.5"
                         data-width="37"
                         data-font-scale="3.297"
@@ -1299,7 +1299,7 @@
                     data-line-height="1.21"
                     style="text-align: right;">
                         Oferecemos reembolso total nos primeiros <span style="font-weight: 800;">07 dias</span> <br>
-<span style="font-weight: 800;">a contar da data da 1a AULA.</span> Se, por qualquer razão, <br>
+<span style="font-weight: 800;">a contar da data da 1ª AULA.</span> Se, por qualquer razão, <br>
 você decidir <span style="font-weight: 800;">dentro do período de garantia,</span> <br>
 que o curso não é para você, devolveremos 100% <br>
 do valor investido, sem complicações <br>
@@ -1425,6 +1425,13 @@ ou questionamentos.
                 
 
         </div>
+
+        <script>
+function irParaTexto() {
+  const destino = document.querySelector('.valor-inv');
+  destino.scrollIntoView({ behavior: 'smooth' });
+}
+</script>
         <script>
 document.addEventListener('DOMContentLoaded', () => {
 
