@@ -12,11 +12,10 @@
         <meta name="robots" content="index, follow">
         <meta property="og:title" content="O Segredo do Desenho | Hartschool">
         <meta property="og:description" content="Desperte seu potencial artístico! Neste curso completo, você vai dominar os fundamentos da linguagem visual, estudar a figura humana em profundidade e aprender a criar personagens do zero com as principais técnicas de character design. Com 20 aulas práticas e 5 sessões de revisão, você vai transformar suas ideias em arte de verdade. É o passo ideal para quem quer evoluir de verdade no desenho.">
-        
-        <!-- FAZER DEPOIS!!! -->
-        <meta property="og:image" content="https://www.seusite.com.br/imagem-para-compartilhar.jpg">
-        <meta property="og:url" content="https://www.seusite.com.br/pagina-atual.html">
-        <meta property="og:type" content="website"> 
+
+        <!-- <meta property="og:image" content="">
+        <meta property="og:url" content="">
+        <meta property="og:type" content="website">  -->
 
 
         <title>O Segredo do Desenho | Hartschool</title>
@@ -1438,14 +1437,12 @@ document.addEventListener('DOMContentLoaded', () => {
   const logos = document.querySelectorAll('.logo-lateral');
 
   // ==========================================================
-  // O PAINEL DE CONTROLE (VERSÃO MOVIMENTO CONTÍNUO)
+  // O PAINEL DE CONTROLE
   // ==========================================================
   const maxMove = 25;
   const maxRotate = 15;
   const minDuration = 0.2;
   const maxDuration = 0.5;
-  // const minDelay = 0.1; // REMOVIDO
-  // const maxDelay = 1;   // REMOVIDO
   // ==========================================================
 
   function getRandomValue(min, max) {
@@ -1462,12 +1459,6 @@ document.addEventListener('DOMContentLoaded', () => {
     logo.style.transitionDuration = `${randomDuration}s`;
     logo.style.transform = `translateX(${randomX}px) translateY(${randomY}px) rotate(${randomRotation}deg)`;
 
-    // const randomDelay = getRandomValue(minDelay, maxDelay); // REMOVIDO
-
-    // A LÓGICA CORRIGIDA:
-    // O próximo ciclo de animação é agendado para começar
-    // EXATAMENTE quando a animação atual terminar.
-    // O "+ randomDelay" foi removido.
     setTimeout(() => {
       animateLogo(logo);
     }, randomDuration * 1000); // Converte a duração para milissegundos
