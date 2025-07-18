@@ -2,6 +2,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const todosOsContainers = document.querySelectorAll('.container-imagem-texto');
 
+  const LIMITE_FONTE_MOBILE_PX = 18;
+
   todosOsContainers.forEach(container => {
 
     const imagemBase = container.querySelector('.imagem-base');
@@ -14,19 +16,39 @@ document.addEventListener('DOMContentLoaded', () => {
 
       elementosSobrepostos.forEach(elemento => {
         const top = elemento.dataset.top;
-        const left = elemento.dataset.left;
+        // Usamos 'let' porque este valor pode ser modificado
+        let leftPercent = parseFloat(elemento.dataset.left); 
         const width = elemento.dataset.width;
         const fontScale = elemento.dataset.fontScale;
         const lineHeight = elemento.dataset.lineHeight;
 
+        // =======================================================
+        // SUA NOVA SUB-ROTINA PARA A CLASSE .debug
+        // =======================================================
+        // Se a largura da JANELA for menor ou igual a 1180px...
+        if (window.innerWidth <= 1180) {
+          // ...e se este elemento específico tiver a classe 'debug'...
+          if (elemento.classList.contains('debug')) {
+            // ...então nós ADICIONAMOS 0.77 ao valor do 'left'.
+            leftPercent += 0.77;
+          }
+        }
+        // =======================================================
+
+        // Aplicamos o valor de 'left', seja o original ou o modificado.
         elemento.style.top = `${top}%`;
-        elemento.style.left = `${left}%`;
+        elemento.style.left = `${leftPercent}%`; 
         elemento.style.width = `${width}%`;
 
-        // LÓGICA PURA E DIRETA:
-        // A fonte é SEMPRE relativa à largura da imagem.
         if (fontScale) {
-          const novoTamanhoFonte = larguraAtualDaImagem * (parseFloat(fontScale) / 100);
+          let novoTamanhoFonte = larguraAtualDaImagem * (parseFloat(fontScale) / 100);
+
+          if (window.innerWidth < 1180) {
+            if (novoTamanhoFonte > LIMITE_FONTE_MOBILE_PX) {
+              novoTamanhoFonte = LIMITE_FONTE_MOBILE_PX;
+            }
+          }
+
           elemento.style.fontSize = `${novoTamanhoFonte}px`;
         }
 
@@ -46,7 +68,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 });
-
 
 
 
