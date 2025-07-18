@@ -2,12 +2,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const todosOsContainers = document.querySelectorAll('.container-imagem-texto');
 
-  // =======================================================
-  // O PAINEL DE CONTROLE CENTRALIZADO
-  // Altere este valor para definir o tamanho máximo da fonte em telas pequenas.
-  const LIMITE_FONTE_MOBILE_PX = 18;
-  // =======================================================
-
   todosOsContainers.forEach(container => {
 
     const imagemBase = container.querySelector('.imagem-base');
@@ -29,22 +23,10 @@ document.addEventListener('DOMContentLoaded', () => {
         elemento.style.left = `${left}%`;
         elemento.style.width = `${width}%`;
 
+        // LÓGICA PURA E DIRETA:
+        // A fonte é SEMPRE relativa à largura da imagem.
         if (fontScale) {
-          // 1. Calculamos o tamanho da fonte proporcionalmente, como sempre.
-          // Usamos 'let' porque o valor pode ser modificado.
-          let novoTamanhoFonte = larguraAtualDaImagem * (parseFloat(fontScale) / 100);
-
-          // 2. O "DISJUNTOR DE SEGURANÇA" AUTOMÁTICO
-          // Se a largura da JANELA for menor que 1180px...
-          if (window.innerWidth < 1180) {
-            // ...e se o tamanho calculado ultrapassar nosso limite de segurança...
-            if (novoTamanhoFonte > LIMITE_FONTE_MOBILE_PX) {
-              // ...então nós forçamos a fonte a obedecer o limite.
-              novoTamanhoFonte = LIMITE_FONTE_MOBILE_PX;
-            }
-          }
-
-          // 3. Aplicamos o tamanho final, que agora é seguro.
+          const novoTamanhoFonte = larguraAtualDaImagem * (parseFloat(fontScale) / 100);
           elemento.style.fontSize = `${novoTamanhoFonte}px`;
         }
 
@@ -64,6 +46,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 });
+
 
 
 
