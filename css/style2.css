@@ -1,0 +1,20 @@
+/* --------------------------------------- VARIÁVEIS GLOBAIS ------------------------------------------- */
+*{padding: 0px; margin: 0px; font-family: "montserrat", sans-serif;}
+.center{text-align: center;}
+.mauto{margin: auto;}
+.w100{width: 100%;}
+.h100{height: 100%;}
+
+.ref-bg{
+  width: 100%;
+  text-align: center;
+}
+.imagem-1-ref{
+  max-width: 1180px;
+  width: 100%;
+  margin: auto;
+}
+
+img{
+    display: block;
+}
