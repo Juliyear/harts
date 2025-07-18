@@ -1,22 +1,20 @@
 document.addEventListener('DOMContentLoaded', () => {
 
-  // encontro TODOS os contêineres que seguem nosso padrão.
-  // isso retorna uma NodeList, que é uma coleção de elementos.
   const todosOsContainers = document.querySelectorAll('.container-imagem-texto');
 
-  // eu itero sobre cada contêiner encontrado para tratá-lo individualmente.
+  // =======================================================
+  // O PAINEL DE CONTROLE CENTRALIZADO
+  // Altere este valor para definir o tamanho máximo da fonte em telas pequenas.
+  const LIMITE_FONTE_MOBILE_PX = 18;
+  // =======================================================
+
   todosOsContainers.forEach(container => {
 
-    //DENTRO de cada iteração, eu encontro a imagem base e os elementos
-    // que pertencem APENAS a este contêiner específico.
     const imagemBase = container.querySelector('.imagem-base');
     const elementosSobrepostos = container.querySelectorAll('.elemento-sobreposto');
 
-    // se um conteiner, por algum erro, não tiver uma imagem base, eu o ignoro.
     if (!imagemBase) return;
 
-    // a função de ajuste é a mesma, mas agora ela opera
-    // com as variáveis 'imagemBase' e 'elementosSobrepostos' do seu escopo atual.
     const ajustarElementos = () => {
       const larguraAtualDaImagem = imagemBase.clientWidth;
 
@@ -25,29 +23,40 @@ document.addEventListener('DOMContentLoaded', () => {
         const left = elemento.dataset.left;
         const width = elemento.dataset.width;
         const fontScale = elemento.dataset.fontScale;
-         const lineHeight = elemento.dataset.lineHeight; // LER O NOVO ATRIBUTO
+        const lineHeight = elemento.dataset.lineHeight;
 
         elemento.style.top = `${top}%`;
         elemento.style.left = `${left}%`;
         elemento.style.width = `${width}%`;
 
         if (fontScale) {
-          const novoTamanhoFonte = larguraAtualDaImagem * (parseFloat(fontScale) / 100);
+          // 1. Calculamos o tamanho da fonte proporcionalmente, como sempre.
+          // Usamos 'let' porque o valor pode ser modificado.
+          let novoTamanhoFonte = larguraAtualDaImagem * (parseFloat(fontScale) / 100);
+
+          // 2. O "DISJUNTOR DE SEGURANÇA" AUTOMÁTICO
+          // Se a largura da JANELA for menor que 1180px...
+          if (window.innerWidth < 1180) {
+            // ...e se o tamanho calculado ultrapassar nosso limite de segurança...
+            if (novoTamanhoFonte > LIMITE_FONTE_MOBILE_PX) {
+              // ...então nós forçamos a fonte a obedecer o limite.
+              novoTamanhoFonte = LIMITE_FONTE_MOBILE_PX;
+            }
+          }
+
+          // 3. Aplicamos o tamanho final, que agora é seguro.
           elemento.style.fontSize = `${novoTamanhoFonte}px`;
         }
 
-        if (lineHeight) { //SE O ATRIBUTO EXISTIR...
-          elemento.style.lineHeight = lineHeight; // ...APLICAR O VALOR
+        if (lineHeight) {
+          elemento.style.lineHeight = lineHeight;
         }
       });
     };
 
-    // isso garante que o redimensionamento da imagem 1 só acione
-    // o ajuste dos elementos da imagem 1.
     const observadorDeTamanho = new ResizeObserver(ajustarElementos);
     observadorDeTamanho.observe(imagemBase);
 
-    // Garanto a execução inicial quando a imagem carregar.
     if (imagemBase.complete) {
       ajustarElementos();
     } else {
@@ -55,6 +64,16 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 });
+
+
+
+
+
+
+
+
+
+
 
 const circulo = document.getElementById('circulo');
 const seta = document.getElementById('seta');
