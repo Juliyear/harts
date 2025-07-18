@@ -260,3 +260,45 @@ p{
 .preco-riscado::after {
   transform: rotate(-8deg);
 }
+
+body{
+  overflow-x: hidden;
+}
+
+@media (max-width: 1180px) {
+  .img-painel-logo{
+    min-width: 1180px;
+    margin: auto;
+  }
+}
+
+
+.divlogo-animado {
+  width: 100%;
+  
+  /* Corta o excesso APENAS na horizontal. */
+  overflow-x: hidden; 
+}
+
+/* 2. A Imagem em Telas Grandes: comportamento padrão. */
+.imglogo-animado {
+  width: 100%;
+  height: auto; /* A altura é sempre proporcional */
+  display: block; /* Remove espaços extras que a tag <img> às vezes tem */
+}
+
+/* 3. A Regra Condicional para o Zoom em Telas Pequenas */
+@media (max-width: 1180px) {
+  
+  .imglogo-animado {
+    /* Torna a própria imagem um universo de posicionamento */
+    position: relative; 
+    
+    /* Sua ordem de zoom */
+    width: 180%; 
+    
+    /* Executa o truque de centragem em si mesma */
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}
