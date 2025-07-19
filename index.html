@@ -22,14 +22,17 @@
     </head>
     <body>
         <div class="divlogo-animado">
-            <div class="container-imagem-texto" style="max-width: 1918px;">
+            
+            <div class="container-imagem-texto att" style="max-width: 1918px;">
+                <div class="barra-roxa w100"></div>
+
                         <img src="img/logo-animado.gif" class="imglogo-animado imagem-base" alt="">
-                        <img src="img/circulo-roxo.jpg" alt="Logo" class="elemento-sobreposto"
+                        <img src="img/circulo-roxo.jpg" alt="Logo" class="elemento-sobreposto circ-roxo"
                     data-top="78.3"
                     data-left="47.59"
                     data-width="4.9"
                     style="border-radius: 50px; animation: circulo-anim 3.5s ease forwards; animation-timing-function: linear; animation-fill-mode: forwards;">
-                    <img src="img/seta-abaixo.gif" alt="Logo" class="elemento-sobreposto"
+                    <img src="img/seta-abaixo.gif" alt="Logo" class="elemento-sobreposto seta-animada"
                     data-top="77.5"
                     data-left="47.2"
                     data-width="5.7"
@@ -1465,6 +1468,23 @@ document.addEventListener('DOMContentLoaded', () => {
     animateLogo(logo);
   });
 });
+</script>
+
+<script>
+    function aplicarTopParaTelaPequena() {
+    const circulo = document.querySelector('.circ-roxo img');
+
+    if (!circulo) return;
+
+    if (window.innerWidth <= 1180) {
+      circulo.style.top = '77.8%';
+    } else {
+      circulo.style.top = '';
+    }
+  }
+
+  aplicarTopParaTelaPequena();
+  window.addEventListener('resize', aplicarTopParaTelaPequena);
 </script>
     </body>
 </html>

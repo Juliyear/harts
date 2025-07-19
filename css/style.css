@@ -273,32 +273,60 @@ body{
 }
 
 
-.divlogo-animado {
-  width: 100%;
-  
-  /* Corta o excesso APENAS na horizontal. */
-  overflow-x: hidden; 
-}
-
-/* 2. A Imagem em Telas Grandes: comportamento padrão. */
-.imglogo-animado {
-  width: 100%;
-  height: auto; /* A altura é sempre proporcional */
-  display: block; /* Remove espaços extras que a tag <img> às vezes tem */
-}
-
-/* 3. A Regra Condicional para o Zoom em Telas Pequenas */
+/* Agora, a regra condicional que realmente funciona */
 @media (max-width: 1180px) {
   
+  /* Se você usa a classe .att como seu contêiner, use este seletor.
+     Se for o .container-imagem-texto, use esse. */
+  .att { /* ou .container-imagem-texto */
+  
+    /* Aplica um zoom de 150% ao contêiner inteiro (imagem + bolinhas) */
+    transform: scale(1.4);
+    
+    /* Ancora o zoom no centro horizontal e no topo vertical,
+       para que ele cresça para os lados e para baixo. */
+    transform-origin: center top;
+
+    /* Opcional: Adicione uma margem inferior para dar espaço ao conteúdo abaixo
+       quando o contêiner crescer. Ajuste o valor conforme necessário. */
+    margin-bottom: 250px; /* Exemplo */
+  }
+}
+
+
+.divlogo-animado {
+  width: 100%;
+  overflow: hidden;   /* Corta o excesso de largura */
+  position: relative; /* Essencial para o contexto do z-index */
+}
+
+/* 2. A Imagem: comportamento padrão. */
+.imglogo-animado {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* 3. A Regra Condicional Final */
+@media (max-width: 1180px) {
   .imglogo-animado {
     /* Torna a própria imagem um universo de posicionamento */
-    position: relative; 
+    position: relative;
+
+    /* SUA ORDEM: Ficar atrás de tudo */
+    z-index: -1;
     
-    /* Sua ordem de zoom */
-    width: 180%; 
+    /* SUA ORDEM: Crescer em tamanho (afetando o layout) */
+    width: 125%; 
     
-    /* Executa o truque de centragem em si mesma */
+    /* SUA ORDEM: Centralizar perfeitamente */
     left: 50%;
     transform: translateX(-50%);
   }
+
+  .seta-animada {
+  /* Move o elemento para baixo em 3 pixels a partir
+     da sua posição final calculada pelo JavaScript. */
+  transform: translateY(2%);
+}
 }

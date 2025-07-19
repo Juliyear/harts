@@ -21,13 +21,13 @@ document.addEventListener('DOMContentLoaded', () => {
         const lineHeight = elemento.dataset.lineHeight;
 
         // =======================================================
-        // A ÚNICA LÓGICA ADICIONAL
+        // A LÓGCA PRO MEU CELULAR QUE N SERVE PRA MAIS NENHUM
         // =======================================================
-        if (window.innerWidth <= 1180) {
-          if (elemento.classList.contains('debug')) {
-            leftPercent += 0.77;
-          }
-        }
+        // if (window.innerWidth <= 1180) {
+        //   if (elemento.classList.contains('debug')) {
+        //     leftPercent += 0.77;
+        //   }
+        // }
         // =======================================================
 
         elemento.style.top = `${top}%`;
