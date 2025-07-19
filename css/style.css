@@ -289,7 +289,7 @@ body{
 
     /* Opcional: Adicione uma margem inferior para dar espaço ao conteúdo abaixo
        quando o contêiner crescer. Ajuste o valor conforme necessário. */
-    margin-bottom: 250px; /* Exemplo */
+    margin-bottom: 16%; /* Exemplo */
   }
 }
 
@@ -325,8 +325,6 @@ body{
   }
 
   .seta-animada {
-  /* Move o elemento para baixo em 3 pixels a partir
-     da sua posição final calculada pelo JavaScript. */
-  transform: translateY(2%);
-}
+    transform: translate(0%, 0%);
+  }
 }
