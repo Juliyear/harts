@@ -333,4 +333,8 @@ body{
   .seta-animada {
     transform: translate(0%, 0%);
   }
+
+  .space{
+    height: 15px;
+  }
 }
